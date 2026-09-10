@@ -1,0 +1,438 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sophie + Sage Logistics - Interactive Deck</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-olive: #546555;
+            --color-cream: #EFE8DE;
+            --color-cream-card: #E4DACB;
+            --color-dark: #222222;
+            --color-tan: #D6C3B1;
+            --color-tan-light: #EBE1D5;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #121212;
+            color: #222222;
+        }
+
+        .font-serif-italic {
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+        }
+
+        /* Slide Aspect Ratio Container */
+        .slide-container {
+            width: 100%;
+            max-width: 410px;
+            height: 720px;
+            max-height: 90vh;
+            aspect-ratio: 9 / 16;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Custom underline styling */
+        .wavy-underline {
+            text-decoration: underline;
+            text-decoration-color: #C19A6B;
+            text-underline-offset: 6px;
+            text-decoration-thickness: 3px;
+        }
+
+        /* Custom Scrollbar hide */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .slide-transition {
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4 select-none">
+
+    <div class="relative flex flex-col items-center">
+        
+        <!-- Mobile Slide Viewport -->
+        <div id="deckViewport" class="slide-container relative overflow-hidden rounded-[32px] bg-[#222222]">
+            
+            <div id="slideTrack" class="w-full h-full flex slide-transition">
+                
+                <div class="w-full h-full flex-shrink-0 relative bg-[#546555] text-white p-7 flex flex-col justify-between overflow-hidden">
+                    <!-- Background Accent Circle -->
+                    <div class="absolute -top-12 -right-12 w-72 h-72 rounded-full bg-[#485849] opacity-60 pointer-events-none"></div>
+
+                    <!-- Header -->
+                    <div class="z-10 pt-2">
+                        <div class="text-[11px] font-bold tracking-[0.2em] text-white/90 uppercase">
+                            SOPHIE + SAGE LOGISTICS
+                        </div>
+                        <div class="text-[10px] font-semibold tracking-[0.15em] text-white/60 mt-1 uppercase">
+                            EST. HENDERSON, NV
+                        </div>
+                        <div class="w-12 h-[2px] bg-white/30 mt-3"></div>
+                    </div>
+
+                    <!-- Title Content -->
+                    <div class="z-10 my-auto py-4">
+                        <h1 class="text-[44px] leading-[0.98] font-extrabold tracking-tight text-white mb-6">
+                            Your<br/>client<br/>is ready<br/>to leave.
+                        </h1>
+                        <p class="font-serif-italic text-[34px] leading-tight text-[#E8D4BE] font-normal">
+                            But she can't<br/>afford to. <span class="inline-block w-8 h-[2px] bg-[#E8D4BE] align-middle ml-1"></span>
+                        </p>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="z-10 pb-2">
+                        <!-- Pill Tag -->
+                        <div class="bg-[#2B2B2B] text-white text-[10px] font-bold tracking-[0.15em] px-5 py-3.5 rounded-full uppercase mb-8 shadow-lg inline-block w-full text-center">
+                            FOR NARCISSISTIC ABUSE COACHES & THERAPISTS
+                        </div>
+
+                        <div class="flex justify-between items-center text-[11px] font-bold tracking-widest text-white/80">
+                            <div class="w-6 h-6 rounded-full border border-white/30 flex items-center justify-center">
+                                <div class="w-1.5 h-1.5 bg-white rounded-full"></div>
+                            </div>
+                            <div class="cursor-pointer hover:text-white flex items-center gap-1" onclick="nextSlide()">
+                                &rarr; SWIPE
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-full flex-shrink-0 relative bg-[#EFE8DE] text-[#222222] p-7 flex flex-col justify-between overflow-hidden">
+                    <!-- Background Top-Right Blob -->
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-[#E8DFD3] rounded-bl-full pointer-events-none"></div>
+
+                    <!-- Header -->
+                    <div class="z-10 pt-2 flex justify-between items-center">
+                        <div class="text-[11px] font-bold tracking-[0.18em] text-[#222222]/80 uppercase">
+                            SOPHIE + SAGE LOGISTICS
+                        </div>
+                        <div class="text-[11px] font-semibold tracking-widest text-[#222222]/50">
+                            02 &mdash; 04
+                        </div>
+                    </div>
+
+                    <!-- Main Content -->
+                    <div class="z-10 my-auto py-2">
+                        <h2 class="text-[40px] leading-[1.05] font-extrabold tracking-tight text-[#222222] mb-6">
+                            You do<br/>the healing.<br/>
+                            <span class="text-[#546555]">We do the<br/>logistics.</span>
+                        </h2>
+
+                        <!-- Feature Cards -->
+                        <div class="space-y-3 mt-4">
+                            <!-- Card 1 -->
+                            <div class="bg-[#E4DACB] rounded-3xl p-4 flex items-center justify-between shadow-sm">
+                                <div class="flex items-center gap-3.5">
+                                    <div class="w-11 h-11 rounded-full bg-white flex items-center justify-center text-xl shadow-inner">
+                                        💰
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-[15px] leading-tight text-[#222222]">Exit Budgeting</h3>
+                                        <p class="text-[12px] text-[#222222]/70 font-medium">We map the real cost to leave</p>
+                                    </div>
+                                </div>
+                                <div class="w-7 h-7 rounded-full bg-[#546555] text-white flex items-center justify-center text-xs">
+                                    ↗
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="bg-white rounded-3xl p-4 flex items-center justify-between shadow-sm">
+                                <div class="flex items-center gap-3.5">
+                                    <div class="w-11 h-11 rounded-full bg-[#F7F3EE] flex items-center justify-center text-xl">
+                                        🏡
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-[15px] leading-tight text-[#222222]">Lease + Utilities</h3>
+                                        <p class="text-[12px] text-[#222222]/70 font-medium">Housing, bills, move &mdash; handled</p>
+                                    </div>
+                                </div>
+                                <div class="w-7 h-7 rounded-full bg-[#EFE8DE] text-[#222222]/60 flex items-center justify-center text-xs">
+                                    ↗
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="bg-[#222222] text-white rounded-3xl p-4 flex items-center justify-between shadow-sm">
+                                <div class="flex items-center gap-3.5">
+                                    <div class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center text-xl">
+                                        🔒
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-[15px] leading-tight text-white flex items-center gap-1.5">
+                                            Encrypted & Discreet <span class="w-1.5 h-1.5 rounded-full bg-[#D6C3B1]"></span>
+                                        </h3>
+                                        <p class="text-[12px] text-white/70 font-medium">Zero paper trail to abuser</p>
+                                    </div>
+                                </div>
+                                <div class="w-7 h-7 rounded-full bg-white text-[#222222] flex items-center justify-center text-xs font-bold">
+                                    ✓
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="z-10 pb-2 text-center">
+                        <div class="cursor-pointer text-[11px] font-bold tracking-widest text-[#222222]/70 hover:text-[#222222]" onclick="nextSlide()">
+                            &rarr; SWIPE FOR PROMISE
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-full flex-shrink-0 relative bg-[#222222] text-white p-7 flex flex-col justify-between overflow-hidden">
+                    <!-- Background Subtle Radial Gradient -->
+                    <div class="absolute inset-0 bg-radial-gradient from-[#333333] to-[#1A1A1A] opacity-50 pointer-events-none"></div>
+
+                    <!-- Header Tag -->
+                    <div class="z-10 pt-2 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-[#C19A6B]"></span>
+                        <span class="text-[11px] font-bold tracking-[0.2em] text-[#C19A6B] uppercase">OUR PROMISE</span>
+                    </div>
+
+                    <!-- Main Content Title -->
+                    <div class="z-10 mt-4 mb-2">
+                        <h2 class="text-[46px] leading-[0.95] font-extrabold tracking-tight text-white">
+                            We <span class="wavy-underline text-[#D6C3B1]">NEVER</span><br/>
+                            compete<br/>
+                            with you
+                        </h2>
+                    </div>
+
+                    <!-- Central Light Card -->
+                    <div class="z-10 bg-[#E8DFD3] text-[#222222] rounded-[30px] p-6 shadow-xl relative border border-[#D6C3B1]/40">
+                        <!-- Top Accent Line -->
+                        <div class="w-12 h-1.5 bg-[#A89886] rounded-full mx-auto -mt-2 mb-5"></div>
+
+                        <!-- Strikethrough Items -->
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-7 h-7 rounded-full bg-[#222222] text-white flex items-center justify-center text-xs font-bold">✕</div>
+                                <span class="text-[20px] font-bold text-[#222222]/50 line-through decoration-2">No coaching</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-7 h-7 rounded-full bg-[#222222] text-white flex items-center justify-center text-xs font-bold">✕</div>
+                                <span class="text-[20px] font-bold text-[#222222]/50 line-through decoration-2">No therapy</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-7 h-7 rounded-full bg-[#222222] text-white flex items-center justify-center text-xs font-bold">✕</div>
+                                <span class="text-[20px] font-bold text-[#222222]/50 line-through decoration-2">No legal advice.</span>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-[#222222]/10 pt-4">
+                            <p class="text-[13px] font-bold text-[#222222]/80 mb-1">
+                                We send them BACK to you for that.
+                            </p>
+                            <p class="text-[26px] leading-tight font-extrabold text-[#546555]">
+                                We just get them OUT.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="z-10 pb-2 flex justify-between items-center text-[10px] font-bold tracking-widest text-white/50">
+                        <span>BUILT FOR COACHES, BY LOGISTICS</span>
+                        <span class="cursor-pointer text-white/80 hover:text-white" onclick="nextSlide()">&rarr; SWIPE</span>
+                    </div>
+                </div>
+
+                <div class="w-full h-full flex-shrink-0 relative bg-[#EFE8DE] text-[#222222] p-7 flex flex-col justify-between overflow-hidden">
+                    <!-- Background Shapes -->
+                    <div class="absolute top-0 left-0 w-full h-[32%] bg-[#546555] rounded-b-full pointer-events-none"></div>
+                    <div class="absolute -bottom-16 -right-16 w-48 h-48 bg-[#546555] rounded-full opacity-80 pointer-events-none"></div>
+
+                    <!-- Top Tag -->
+                    <div class="z-10 pt-2 text-center">
+                        <div class="inline-flex items-center gap-2 bg-[#546555]/80 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
+                            <span class="w-2 h-2 rounded-full bg-white"></span>
+                            <span class="text-[9px] font-bold tracking-[0.18em] text-white uppercase">PARTNER APPLICATIONS OPEN</span>
+                        </div>
+                    </div>
+
+                    <!-- Headline -->
+                    <div class="z-10 text-center my-auto pt-4">
+                        <h2 class="text-[44px] leading-[0.95] font-extrabold tracking-tight text-[#222222] mb-6">
+                            Become<br/>a Partner
+                        </h2>
+
+                        <!-- QR Code Card -->
+                        <div class="relative inline-block bg-white p-6 rounded-[32px] shadow-lg border border-[#E4DACB]">
+                            <!-- Badge -->
+                            <div class="absolute -top-3 -right-2 bg-[#D6C3B1] text-[#222222] text-[10px] font-extrabold tracking-widest px-3 py-1 rounded-full shadow-sm">
+                                SCAN ME
+                            </div>
+
+                            <!-- Mock QR Code Design -->
+                            <div class="w-44 h-44 border-2 border-dashed border-[#222222]/20 rounded-2xl p-2 flex flex-col justify-between bg-white">
+                                <div class="grid grid-cols-5 gap-1.5 h-full w-full">
+                                    <!-- Row 1 -->
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                    <div class="bg-transparent"></div>
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                    <!-- Row 2 -->
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                    <div class="bg-transparent"></div>
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                    <div class="bg-transparent"></div>
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                    <!-- Row 3 -->
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                    <div class="bg-transparent"></div>
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                    <!-- Row 4 -->
+                                    <div class="bg-transparent"></div>
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                    <div class="bg-transparent"></div>
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                    <div class="bg-transparent"></div>
+                                    <!-- Row 5 -->
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                    <div class="bg-transparent"></div>
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                    <div class="bg-[#222222] rounded-md"></div>
+                                </div>
+                            </div>
+                            <div class="text-[10px] font-bold tracking-widest text-[#222222]/40 mt-3 uppercase">
+                                QR CODE
+                            </div>
+                        </div>
+
+                        <div class="text-[11px] font-bold tracking-[0.2em] text-[#222222]/60 mt-4 uppercase">
+                            SCAN TO APPLY
+                        </div>
+                    </div>
+
+                    <!-- Bottom Info Box -->
+                    <div class="z-10 pb-2">
+                        <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-sm border border-white flex items-start gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#546555] mt-1 flex-shrink-0"></span>
+                            <p class="text-[12px] font-bold leading-snug text-[#222222]">
+                                Free Partner Pack: intake cards + private link for your clients
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Slide Indicator Bar (Right side) -->
+            <div class="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-30">
+                <div class="dot w-1.5 h-6 rounded-full bg-white transition-all duration-300"></div>
+                <div class="dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all duration-300"></div>
+                <div class="dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all duration-300"></div>
+                <div class="dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all duration-300"></div>
+            </div>
+        </div>
+
+        <!-- Controls Bar -->
+        <div class="flex items-center gap-4 mt-6">
+            <button onclick="prevSlide()" class="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors focus:outline-none">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="15 19l-7-7 7-7"></path></svg>
+            </button>
+            <span id="slideCounter" class="text-white/70 text-sm font-semibold tracking-wider">1 / 4</span>
+            <button onclick="nextSlide()" class="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors focus:outline-none">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="9 5l7 7-7 7"></path></svg>
+            </button>
+        </div>
+        <p class="text-white/40 text-xs mt-2">Use arrow keys or swipe to navigate</p>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const totalSlides = 4;
+        const track = document.getElementById('slideTrack');
+        const counter = document.getElementById('slideCounter');
+        const dots = document.querySelectorAll('.dot');
+
+        function updateSlide() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            counter.innerText = `${currentIndex + 1} / ${totalSlides}`;
+            
+            dots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.remove('h-1.5', 'bg-white/40');
+                    dot.classList.add('h-6', 'bg-white');
+                } else {
+                    dot.classList.remove('h-6', 'bg-white');
+                    dot.classList.add('h-1.5', 'bg-white/40');
+                }
+            });
+        }
+
+        function nextSlide() {
+            if (currentIndex < totalSlides - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0; // Loop back
+            }
+            updateSlide();
+        }
+
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = totalSlides - 1;
+            }
+            updateSlide();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                prevSlide();
+            }
+        });
+
+        // Touch Swipe Navigation
+        let startX = 0;
+        let endX = 0;
+        const viewport = document.getElementById('deckViewport');
+
+        viewport.addEventListener('touchstart', (e) => {
+            startX = e.changedTouches[0].screenX;
+        }, false);
+
+        viewport.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            const threshold = 40;
+            if (startX - endX > threshold) {
+                nextSlide();
+            } else if (endX - startX > threshold) {
+                prevSlide();
+            }
+        }
+    </script>
+</body>
+</html>
+```
